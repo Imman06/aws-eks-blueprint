@@ -86,7 +86,7 @@ module "eks_blueprints_addons" {
     #     }
     #   })
     # }
-    vpc-cni    = {}
+    # vpc-cni    = {}
     # kube-proxy = {}
   }
 
@@ -111,9 +111,17 @@ module "eks_blueprints_addons" {
 #   }
 
 #   tags = local.tags
+  helm_releases = {
+    sealed-secrets = {
+      description      = "A Helm chart for sealed-secrets"
+      namespace        = "default"
+      create_namespace = true
+      chart            = "sealed-secrets"
+      chart_version    = "2.13.0"
+      repository       = "https://bitnami-labs.github.io/sealed-secrets"
+    }
+  }
 }
-
-
 # ################################################################################
 # # Sample App
 # ################################################################################
@@ -181,3 +189,4 @@ module "eks_blueprints_addons" {
 #     type = "NodePort"
 #   }
 # }
+

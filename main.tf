@@ -189,9 +189,8 @@ provider "helm" {
 # #     type = "NodePort"
 # #   }
 # # }
-resource "helm_release" "sealed_secret" {
-  name       = "default"
-  repository = "https://bitnami-labs.github.io/sealed-secrets"
-  chart      = "sealed-secrets"
-  version    = "2.13.0"
-  }
+resource "helm_release" "example" {
+  name       = "example"
+  repository = "https://kubernetes-charts.storage.googleapis.com"
+  chart      = "prometheus-operator"
+}
